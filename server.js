@@ -40,7 +40,7 @@ app.use(rateLimit({
   standardHeaders: "draft-8",
   legacyHeaders: false
 }));
-app.use(express.static(path.join(__dirname, "..", "public")));
+app.use(express.static(__dirname));
 
 const EMERGENCY = [
   "not breathing","stopped breathing","struggling to breathe","can't breathe","cannot breathe",
@@ -242,9 +242,9 @@ add account deletion/export, complete a DPIA where appropriate, and document eve
   );
 });
 
-app.get("*", (req, res) =>
-  res.sendFile(path.join(__dirname, "..", "public", "index.html"))
-);
+app.use((req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
+});
 
 app.listen(PORT, () => {
   console.log(`MumMate AI v4 running at ${BASE_URL}`);
