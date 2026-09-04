@@ -99,7 +99,27 @@ async function handleChat(e){
     save();renderHistory();
   }catch{wait.remove();addBubble("I couldn't reach the app server.","assistant")}
 }
-function addBubble(t,w){const r=document.createElement("div");r.className=`msg ${w}`;const b=document.createElement("div");b.className="bubble";b.textContent=t;r.appendChild(b);messages.appendChild(r);messages.scrollTop=messages.scrollHeight;return r}
+function formatAIText(t=""){
+  let s=esc(t);
+  s=s.replace(/^### (.+)$/gm,"<h3>$1</h3>");
+  s=s.replace(/^## (.+)$/gm,"<h3>$1</h3>");
+  s=s.replace(/\*\*(.+?)\*\*/g,"<strong>$1</strong>");
+  s=s.replace(/^- (.+)$/gm,"• $1");
+  s=s.replace(/\n/g,"<br>");
+  return s;
+}
+function addBubble(t,w){
+  const r=document.createElement("div");
+  r.className=`msg ${w}`;
+  const b=document.createElement("div");
+  b.className="bubble";
+  if(w==="assistant") b.innerHTML=formatAIText(t);
+  else b.textContent=t;
+  r.appendChild(b);
+  messages.appendChild(r);
+  messages.scrollTop=messages.scrollHeight;
+  return r;
+}
 
 function renderChildren(){
   document.querySelector("#children").innerHTML=`<header class="topbar"><div class="brand"><h1>Children</h1><p>Profiles used to personalise answers and logs</p></div></header>
