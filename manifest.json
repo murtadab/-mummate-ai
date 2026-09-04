@@ -1,0 +1,9 @@
+{
+  "name": "MumMate AI",
+  "short_name": "MumMate",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f6f7fb",
+  "theme_color": "#ffffff",
+  "description": "UK-focused parenting assistant prototype with child profiles, trackers and reminders."
+}
