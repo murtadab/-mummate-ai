@@ -7,7 +7,7 @@
     "node": ">=20"
   },
   "scripts": {
-    "start":    node server.js
+    "start": "node server.js",
     "dev": "node --watch server/server.js",
     "check": "node --check server/server.js"
   },
