@@ -1,0 +1,9 @@
+{
+  "appId": "com.mummate.ai",
+  "appName": "MumMate",
+  "webDir": ".",
+  "server": {
+    "url": "https://mummate-ai.onrender.com",
+    "cleartext": false
+  }
+}
